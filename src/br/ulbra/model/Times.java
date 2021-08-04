@@ -45,7 +45,9 @@ public class Times {
             JOptionPane.showMessageDialog(null, "A base se encontra vazia...");
         }
     }
-
+     public boolean retornarVazio(){
+         return times.isEmpty();
+     }
     public int pesquisar(String nome) {
         boolean achou=false;
         int i, ind;

@@ -20,6 +20,10 @@ public class FrCadastro extends javax.swing.JFrame {
     public FrCadastro() {
         initComponents();
         setLocationRelativeTo(null);
+        btExcluir.setVisible(false);
+        btEditar.setVisible(false);
+        txtEditaExclui.setVisible(false);
+        txtBuscar.setVisible(false);
     }
 
     /**
@@ -41,10 +45,13 @@ public class FrCadastro extends javax.swing.JFrame {
         btListar = new javax.swing.JButton();
         btLimpar = new javax.swing.JButton();
         btPesquisa = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
+        txtBuscar = new javax.swing.JLabel();
         txtPesquisa = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btExcluir = new javax.swing.JButton();
+        btEditar = new javax.swing.JButton();
+        txtEditaExclui = new javax.swing.JTextField();
+        btOption = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -77,25 +84,25 @@ public class FrCadastro extends javax.swing.JFrame {
         txtLista.setRows(5);
         jScrollPane1.setViewportView(txtLista);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 98, 340, 115));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 340, 115));
 
         btListar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        btListar.setText("Listar");
+        btListar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/list2.png"))); // NOI18N
         btListar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btListarActionPerformed(evt);
             }
         });
-        jPanel1.add(btListar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 300, 73, 40));
+        jPanel1.add(btListar, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 160, 70, 40));
 
         btLimpar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        btLimpar.setText("Limpar");
+        btLimpar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/limps.png"))); // NOI18N
         btLimpar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btLimparActionPerformed(evt);
             }
         });
-        jPanel1.add(btLimpar, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 300, 87, 40));
+        jPanel1.add(btLimpar, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 110, 70, 40));
 
         btPesquisa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/lupa.png"))); // NOI18N
         btPesquisa.addActionListener(new java.awt.event.ActionListener() {
@@ -103,33 +110,57 @@ public class FrCadastro extends javax.swing.JFrame {
                 btPesquisaActionPerformed(evt);
             }
         });
-        jPanel1.add(btPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 230, 58, 38));
+        jPanel1.add(btPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 220, 58, 38));
 
-        jLabel3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Pesquisar");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, -1, -1));
+        txtBuscar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        txtBuscar.setForeground(new java.awt.Color(255, 255, 255));
+        txtBuscar.setText("Buscar:");
+        jPanel1.add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, -1, -1));
 
         txtPesquisa.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jPanel1.add(txtPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 230, 185, 40));
+        jPanel1.add(txtPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 220, 185, 40));
 
-        jButton2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jButton2.setText("Excluir");
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 300, -1, 40));
+        btExcluir.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/excluir.png"))); // NOI18N
+        btExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btExcluirActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btExcluir, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 290, 60, 40));
 
-        jButton3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jButton3.setText("Editar");
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 300, -1, 40));
+        btEditar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/edit.png"))); // NOI18N
+        btEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btEditarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 290, 60, 40));
+        jPanel1.add(txtEditaExclui, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 290, 210, 40));
+
+        btOption.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/option.png"))); // NOI18N
+        btOption.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btOptionActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btOption, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 220, 70, 40));
+
+        jLabel4.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Pesquisar");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 427, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 389, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 373, Short.MAX_VALUE)
         );
 
         pack();
@@ -137,7 +168,7 @@ public class FrCadastro extends javax.swing.JFrame {
    static Times bdTime = new Times();
     private void btSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarActionPerformed
         if (txtTime.getText().equals("") || txtTime.getText().equals(null)
-                || txtTime.getText().length()<=2) {
+                || txtTime.getText().length() <= 2) {
             JOptionPane.showMessageDialog(null, "Insira um time antes de salvar!!");
         } else {
             bdTime.adicionar(txtTime.getText());
@@ -155,20 +186,43 @@ public class FrCadastro extends javax.swing.JFrame {
     }//GEN-LAST:event_btLimparActionPerformed
 
     private void btPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btPesquisaActionPerformed
-       String nome;
-       int i;
-       nome = txtPesquisa.getText();
-       i = bdTime.pesquisar(nome);
-       if(i!= -1){
-       txtLista.setText("     Resultado da Pesquisa realizada     "
-               + "\n=======================================\n\n"
-               +(i+1)+" - "+nome.toUpperCase());
-       }else{
-           txtLista.setText("     Resultado da Pesquisa realizada     "
-               + "\n=======================================\n\n"
-               + "Este time não foi encontrado!");
-       }
+        String nome;
+        int i;
+        nome = txtPesquisa.getText();
+        i = bdTime.pesquisar(nome);
+        if (i != -1) {
+            txtLista.setText("     Resultado da Pesquisa realizada     "
+                    + "\n=======================================\n\n"
+                    + (i + 1) + " - " + nome.toUpperCase());
+        } else if (bdTime.retornarVazio()) {
+            txtLista.setText("     Relação de Times vazia!!     ");
+
+        } else {
+            txtLista.setText("     Resultado da Pesquisa realizada     "
+                    + "\n=======================================\n\n"
+                    + "Este time não foi encontrado!");
+        }
     }//GEN-LAST:event_btPesquisaActionPerformed
+
+    private void btOptionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btOptionActionPerformed
+        if (!bdTime.retornarVazio()) {
+            btExcluir.setVisible(true);
+            btEditar.setVisible(true);
+            txtEditaExclui.setVisible(true);
+            txtBuscar.setVisible(true);
+        } else {
+      JOptionPane.showMessageDialog(null, "Não existe times para edição ou exclusão",
+                                              "alerta", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_btOptionActionPerformed
+    private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
+        btExcluir.setVisible(false);    btEditar.setVisible(false);
+        txtEditaExclui.setVisible(false);        txtBuscar.setVisible(false);
+    }//GEN-LAST:event_btEditarActionPerformed
+    private void btExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluirActionPerformed
+        btExcluir.setVisible(false);      btEditar.setVisible(false);
+        txtEditaExclui.setVisible(false);  txtBuscar.setVisible(false);
+    }//GEN-LAST:event_btExcluirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -206,17 +260,20 @@ public class FrCadastro extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btEditar;
+    private javax.swing.JButton btExcluir;
     private javax.swing.JButton btLimpar;
     private javax.swing.JButton btListar;
+    private javax.swing.JButton btOption;
     private javax.swing.JButton btPesquisa;
     private javax.swing.JButton btSalvar;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel txtBuscar;
+    private javax.swing.JTextField txtEditaExclui;
     private javax.swing.JTextArea txtLista;
     private javax.swing.JTextField txtPesquisa;
     private javax.swing.JTextField txtTime;
