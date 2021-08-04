@@ -40,9 +40,9 @@ public class FrCadastro extends javax.swing.JFrame {
         txtLista = new javax.swing.JTextArea();
         btListar = new javax.swing.JButton();
         btLimpar = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        btPesquisa = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtPesquisa = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
 
@@ -97,16 +97,21 @@ public class FrCadastro extends javax.swing.JFrame {
         });
         jPanel1.add(btLimpar, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 300, 87, 40));
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/lupa.png"))); // NOI18N
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 230, 58, 38));
+        btPesquisa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/lupa.png"))); // NOI18N
+        btPesquisa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btPesquisaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 230, 58, 38));
 
         jLabel3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Pesquisar");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, -1, -1));
 
-        jTextField1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 230, 185, 40));
+        txtPesquisa.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jPanel1.add(txtPesquisa, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 230, 185, 40));
 
         jButton2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jButton2.setText("Excluir");
@@ -149,6 +154,22 @@ public class FrCadastro extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btLimparActionPerformed
 
+    private void btPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btPesquisaActionPerformed
+       String nome;
+       int i;
+       nome = txtPesquisa.getText();
+       i = bdTime.pesquisar(nome);
+       if(i!= -1){
+       txtLista.setText("     Resultado da Pesquisa realizada     "
+               + "\n=======================================\n\n"
+               +(i+1)+" - "+nome.toUpperCase());
+       }else{
+           txtLista.setText("     Resultado da Pesquisa realizada     "
+               + "\n=======================================\n\n"
+               + "Este time não foi encontrado!");
+       }
+    }//GEN-LAST:event_btPesquisaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -187,8 +208,8 @@ public class FrCadastro extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btLimpar;
     private javax.swing.JButton btListar;
+    private javax.swing.JButton btPesquisa;
     private javax.swing.JButton btSalvar;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
@@ -196,8 +217,8 @@ public class FrCadastro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextArea txtLista;
+    private javax.swing.JTextField txtPesquisa;
     private javax.swing.JTextField txtTime;
     // End of variables declaration//GEN-END:variables
 }

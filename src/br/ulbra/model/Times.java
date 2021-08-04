@@ -12,7 +12,7 @@ public class Times {
     public ArrayList<String> times = new ArrayList();
 
     public void adicionar(String time) {
-        times.add(time);
+        times.add(time.toUpperCase());
         JOptionPane.showMessageDialog(null, "O time " + time
                 + " foi adicionado com sucesso!!");
     }
@@ -46,8 +46,20 @@ public class Times {
         }
     }
 
-    public String pesquisar(String time) {
-        return null;
+    public int pesquisar(String nome) {
+        boolean achou=false;
+        int i, ind;
+        ind = -1;
+        i=0;
+        while(i<times.size() && !(achou)){
+            if(times.get(i).equals(nome.toUpperCase())){
+                achou = true;
+                ind = i;
+            }
+            i++;
+        }
+        
+        return ind;
     }
 
 }
