@@ -45,23 +45,32 @@ public class Times {
             JOptionPane.showMessageDialog(null, "A base se encontra vazia...");
         }
     }
-     public boolean retornarVazio(){
-         return times.isEmpty();
-     }
+
+    public boolean retornarVazio() {
+        return times.isEmpty();
+    }
+
     public int pesquisar(String nome) {
-        boolean achou=false;
+        boolean achou = false;
         int i, ind;
         ind = -1;
-        i=0;
-        while(i<times.size() && !(achou)){
-            if(times.get(i).equals(nome.toUpperCase())){
+        i = 0;
+        while (i < times.size() && !(achou)) {
+            if (times.get(i).equals(nome.toUpperCase())) {
                 achou = true;
                 ind = i;
             }
             i++;
         }
-        
+
         return ind;
     }
 
+    public void excluir(int i) {
+     
+        times.remove(i);
+    }
+    public void editar(int i, String novoNome){
+        times.set(i, novoNome);
+    }
 }

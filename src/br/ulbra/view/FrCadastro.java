@@ -156,7 +156,9 @@ public class FrCadastro extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 481, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -211,17 +213,62 @@ public class FrCadastro extends javax.swing.JFrame {
             txtEditaExclui.setVisible(true);
             txtBuscar.setVisible(true);
         } else {
-      JOptionPane.showMessageDialog(null, "Não existe times para edição ou exclusão",
-                                              "alerta", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Não existe times para edição ou exclusão",
+                    "alerta", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btOptionActionPerformed
     private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
-        btExcluir.setVisible(false);    btEditar.setVisible(false);
-        txtEditaExclui.setVisible(false);        txtBuscar.setVisible(false);
+   String nome, novoNome;
+        int i;
+        nome = txtEditaExclui.getText().toUpperCase();
+        i = bdTime.pesquisar(nome);
+        
+        if (i != -1) {
+           novoNome = JOptionPane.showInputDialog("Informe o nome do Time").toUpperCase();
+            if (JOptionPane.showConfirmDialog(null, "Tem certeza que deseja alterar este time?",
+                    "Alterar", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+                bdTime.editar(i,novoNome);
+                btListar.doClick();
+            }
+        } else if (bdTime.retornarVazio()) {
+            txtLista.setText("     Relação de Times vazia!!     ");
+
+        } else {
+            txtLista.setText("     Resultado da Pesquisa realizada     "
+                    + "\n=======================================\n\n"
+                    + "Este time não foi encontrado!");
+        }
+
+        btExcluir.setVisible(false);
+        btEditar.setVisible(false);
+        txtEditaExclui.setVisible(false);
+        txtBuscar.setVisible(false);
     }//GEN-LAST:event_btEditarActionPerformed
     private void btExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluirActionPerformed
-        btExcluir.setVisible(false);      btEditar.setVisible(false);
-        txtEditaExclui.setVisible(false);  txtBuscar.setVisible(false);
+        String nome;
+        int i;
+        nome = txtEditaExclui.getText().toUpperCase();
+
+        i = bdTime.pesquisar(nome);
+        if (i != -1) {
+            if (JOptionPane.showConfirmDialog(null, "Tem certeza que deseja excluir este time?",
+                    "Excluir", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+                bdTime.excluir(i);
+                txtLista.setText("Time Excluído com Sucesso!!");
+            }
+        } else if (bdTime.retornarVazio()) {
+            txtLista.setText("     Relação de Times vazia!!     ");
+
+        } else {
+            txtLista.setText("     Resultado da Pesquisa realizada     "
+                    + "\n=======================================\n\n"
+                    + "Este time não foi encontrado!");
+        }
+
+        btExcluir.setVisible(false);
+        btEditar.setVisible(false);
+        txtEditaExclui.setVisible(false);
+        txtBuscar.setVisible(false);
     }//GEN-LAST:event_btExcluirActionPerformed
 
     /**
